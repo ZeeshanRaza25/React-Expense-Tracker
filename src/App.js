@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import InputData from './components/Inputdata';
 import TableComponent from './components/Table';
+import ShowResult from './components/ShowResult';
 
 
 function App() {
@@ -10,11 +11,11 @@ function App() {
       <header className="App-header">
         <h1>React Expense Tracker</h1>
       </header>
+      <ShowResult />
+      <br /><br />
       <div>
-        <br /><br />
         <InputData />
       </div>
-      <br /><br />
       <TableComponent />
     </div>
   );

@@ -120,15 +120,19 @@ function TableComponent() {
 
     return (
         <Paper className={classes.root}>
+            <h1>
+                Transaction Record Detail
+            </h1>
+            <br/>
             <Table className={classes.table} aria-label="caption table">
                 {/* <caption>A barbone structure table example with a caption</caption> */}
                 <TableHead>
                     <TableRow>
                         <TableCell align="left">Title </TableCell>
-                        <TableCell align="left">Income</TableCell>
-                        <TableCell align="left">Expenses&nbsp;(Rs)</TableCell>
-                        <TableCell align="left">Edit Action</TableCell>
-                        <TableCell align="left">Delete Action</TableCell>
+                        <TableCell align="left">Income&nbsp;($)</TableCell>
+                        <TableCell align="left">Expenses&nbsp;($)</TableCell>
+                        <TableCell align="left" />
+                        <TableCell align="left" />
                     </TableRow>
                 </TableHead>
                 <TableBody>

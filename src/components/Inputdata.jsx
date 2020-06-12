@@ -12,18 +12,19 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1.5),
             width: '30ch',
             // alignItems: 'center'
+            marginLeft: `3%`,
         },
     },
     TextField: {
-        marginLeft: `10%`,
+        marginLeft: `3%`,
     },
     button: {
         backgroundColor: "green",
         border: 'none',
         // color: 'white',
-        padding: 15,
+        padding: 7,
         textAlign: 'center',
-        fontSize: 16,
+        // fontSize: 15,
     }
 }));
 
@@ -50,9 +51,9 @@ export default function InputData() {
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            <TextField className={classes.TextField} size="medium" variant="outlined" id="standard-basic" label="Title" onChange={(event) => setTitle(event.target.value)} />
-            <TextField id="standard-basic"  size="medium" variant="outlined" label="Income" onChange={(event) => setIncome(event.target.value)} />
-            <TextField id="standard-basic" size="medium" variant="outlined" label="Expenses" onChange={(event) => setExpenses(event.target.value)} />
+            <TextField className={classes.TextField} size="small" variant="outlined" id="standard-basic" label="Title" onChange={(event) => setTitle(event.target.value)} />
+            <TextField id="standard-basic" size="small" variant="outlined" label="Income" onChange={(event) => setIncome(event.target.value)} />
+            <TextField id="standard-basic" size="small" variant="outlined" label="Expenses" onChange={(event) => setExpenses(event.target.value)} />
             <Button className={classes.button} variant="outlined" onClick={onSubmit}>
                 Add Transaction
             </Button>

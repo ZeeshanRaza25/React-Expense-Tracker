@@ -18,24 +18,28 @@ import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "90%",
-        marginTop: theme.spacing(3),
+        width: "75%",
+        marginTop: theme.spacing(1),
         overflowX: "auto",
-        margin: 'auto',
-        textAlign: 'center'
+        // marginLeft: `3%`,
+        textAlign: 'center',
+        alignSelf: 'center',
+        alignContent: 'center',
+        margin: `10%`,
+        // padding: 'auto'
     },
     table: {
-        minWidth: 650
+        // minWidth: `90%`
     },
     selectTableCell: {
-        width: 60
+        // width: `25%`
     },
     tableCell: {
-        width: 130,
+        // width: `25%`,
         height: 40
     },
     input: {
-        width: 130,
+        // width: `25%`,
         height: 40
     }
 }));

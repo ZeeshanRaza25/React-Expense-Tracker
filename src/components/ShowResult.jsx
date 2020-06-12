@@ -1,23 +1,31 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-import {GlobalContext} from '../context/GlobalState';
+import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles({
     mainroot: {
         minWidth: 275,
         display: 'inline-block',
-        marginLeft: `10%`,
+        marginLeft: `4%`,
+        // height: 100%,
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
     },
     root: {
         minWidth: 275,
         display: 'inline-block',
-        marginLeft: `2%`,
+        // marginLeft: `4%`,
         // border: 1,
         // borderColor: 'black'
+        
+        // display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
         fontSize: 20,
@@ -30,13 +38,13 @@ const useStyles = makeStyles({
 });
 
 export default function ShowResult() {
-    const {transactions} = useContext(GlobalContext);
+    const { transactions } = useContext(GlobalContext);
 
     // const totalIncome = inc.reduce((a, b) => a =+ b);
-    const inc = transactions.reduce((result, {income}) => result += income, 0);
-    console.log(inc);    
+    const inc = transactions.reduce((result, { income }) => result += income, 0);
+    console.log(inc);
 
-    const totalExpenses  = transactions.reduce((result, {expenses}) => result += expenses, 0);
+    const totalExpenses = transactions.reduce((result, { expenses }) => result += expenses, 0);
     // const totalExpenses = exp.reduce((a, b) => a += b);
 
     console.log(inc, totalExpenses);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -13,6 +13,9 @@ import EditIcon from "@material-ui/icons/EditOutlined";
 import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
 import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 import DeleteIcon from '@material-ui/icons/Delete';
+
+import { GlobalContext } from '../context/GlobalState';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,8 +40,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const createData = (title, income, expenses) => ({
-    id: title.replace(" ", "_"),
+const createData = ({ id, title, income, expenses }) => ({
+    id,
     title,
     income,
     expenses,
@@ -64,13 +67,21 @@ const CustomTableCell = ({ row, name, onChange }) => {
     );
 };
 
-function TableComponent() {
-    const [rows, setRows] = React.useState([
-        createData("Title1", 1590, 600),
-        createData("Title2", 2370, 900),
-        createData("Title3", 2620, 1600)
-    ]);
-    const [previous, setPrevious] = React.useState({});
+export default function TableComponent() {
+    const { transactions } = useContext(GlobalContext);
+    // console.log(transactions);
+    const [rows, setRows] = useState(transactions);
+
+    // const [rows, setRows] = useState([
+    //     transactions.map(transaction => createData({
+    //             id: transaction.id,
+    //             title: transaction.title,
+    //             income: transaction.income,
+    //             expenses: transaction.expenses
+    //         })
+    //     )
+    // ]);
+    const [previous, setPrevious] = useState({});
     const classes = useStyles();
 
     const onToggleEditMode = id => {
@@ -123,11 +134,12 @@ function TableComponent() {
             <h1>
                 Transaction Record Detail
             </h1>
-            <br/>
+            <br />
             <Table className={classes.table} aria-label="caption table">
                 {/* <caption>A barbone structure table example with a caption</caption> */}
                 <TableHead>
                     <TableRow>
+                        {/* <TableCell align="left">ID </TableCell> */}
                         <TableCell align="left">Title </TableCell>
                         <TableCell align="left">Income&nbsp;($)</TableCell>
                         <TableCell align="left">Expenses&nbsp;($)</TableCell>
@@ -138,6 +150,8 @@ function TableComponent() {
                 <TableBody>
                     {rows.map(row => (
                         <TableRow key={row.id}>
+                            {/* {console.log(row)} */}
+                            {/* <CustomTableCell {...{ row, name: "id", onChange }} /> */}
                             <CustomTableCell {...{ row, name: "title", onChange }} />
                             <CustomTableCell {...{ row, name: "income", onChange }} />
                             <CustomTableCell {...{ row, name: "expenses", onChange }} />
@@ -181,4 +195,3 @@ function TableComponent() {
     );
 }
 
-export default TableComponent;

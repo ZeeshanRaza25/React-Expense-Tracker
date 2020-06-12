@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+
+import {GlobalContext} from '../context/GlobalState';
 
 const useStyles = makeStyles({
     root: {
@@ -20,9 +22,19 @@ const useStyles = makeStyles({
 });
 
 export default function ShowResult() {
+    const {transactions} = useContext(GlobalContext);
+
+    const inc = transactions.map(transaction=> transaction.income);
+    const totalIncome = inc.reduce((acc, item) => (acc += item) , 0).toFixed(2);
+
+    const exp = transactions.map(transaction=> transaction.expenses);
+    const totalExpenses = exp.reduce((acc, item) => (acc += item) , 0).toFixed(2);
+
+    // console.log(transactions);
+
     const classes = useStyles();
-    let income = 1000;
-    let expenses = 500;
+    let income = totalIncome;
+    let expenses = totalExpenses;
     let totalBalance = income - expenses;
     return (
         <div>

@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
         width: "90%",
         marginTop: theme.spacing(3),
         overflowX: "auto",
-        margin: 'auto'
+        margin: 'auto',
+        textAlign: 'center'
     },
     table: {
         minWidth: 650
@@ -39,14 +40,6 @@ const useStyles = makeStyles(theme => ({
         height: 40
     }
 }));
-
-const createData = ({ id, title, income, expenses }) => ({
-    id,
-    title,
-    income,
-    expenses,
-    isEditMode: false
-});
 
 const CustomTableCell = ({ row, name, onChange }) => {
     const classes = useStyles();
@@ -68,25 +61,17 @@ const CustomTableCell = ({ row, name, onChange }) => {
 };
 
 export default function TableComponent() {
-    const { transactions } = useContext(GlobalContext);
+    const { transactions, deleteTransaction } = useContext(GlobalContext);
     // console.log(transactions);
-    const [rows, setRows] = useState(transactions);
+    const [transaction, setTransaction] = useState(transactions);
+    // console.log(transaction);
 
-    // const [rows, setRows] = useState([
-    //     transactions.map(transaction => createData({
-    //             id: transaction.id,
-    //             title: transaction.title,
-    //             income: transaction.income,
-    //             expenses: transaction.expenses
-    //         })
-    //     )
-    // ]);
     const [previous, setPrevious] = useState({});
     const classes = useStyles();
 
     const onToggleEditMode = id => {
-        setRows(state => {
-            return rows.map(row => {
+        setTransaction(state => {
+            return transaction.map(row => {
                 if (row.id === id) {
                     return { ...row, isEditMode: !row.isEditMode };
                 }
@@ -95,7 +80,7 @@ export default function TableComponent() {
         });
     };
     const deleteItem = id => {
-        setRows(() => rows.filter(row => row.id !== id));
+        setTransaction(() => transaction.filter(row => row.id !== id));
     };
 
     const onChange = (e, row) => {
@@ -105,23 +90,23 @@ export default function TableComponent() {
         const value = e.target.value;
         const name = e.target.name;
         const { id } = row;
-        const newRows = rows.map(row => {
+        const newtransaction = transaction.map(row => {
             if (row.id === id) {
                 return { ...row, [name]: value };
             }
             return row;
         });
-        setRows(newRows);
+        setTransaction(newtransaction);
     };
 
     const onRevert = id => {
-        const newRows = rows.map(row => {
+        const newtransaction = transaction.map(row => {
             if (row.id === id) {
                 return previous[id] ? previous[id] : row;
             }
             return row;
         });
-        setRows(newRows);
+        setTransaction(newtransaction);
         setPrevious(state => {
             delete state[id];
             return state;
@@ -148,7 +133,7 @@ export default function TableComponent() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(row => (
+                    {transaction.map(row => (
                         <TableRow key={row.id}>
                             {/* {console.log(row)} */}
                             {/* <CustomTableCell {...{ row, name: "id", onChange }} /> */}
@@ -184,6 +169,7 @@ export default function TableComponent() {
                                 <DeleteIcon
                                     aria-label="delete"
                                     onClick={() => deleteItem(row.id)}
+                                    // onClick={() => deleteTransaction(row.id)}
                                 >
                                 </DeleteIcon>
                             </TableCell>

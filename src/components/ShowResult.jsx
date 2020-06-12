@@ -7,17 +7,25 @@ import Typography from '@material-ui/core/Typography';
 import {GlobalContext} from '../context/GlobalState';
 
 const useStyles = makeStyles({
+    mainroot: {
+        minWidth: 275,
+        display: 'inline-block',
+        marginLeft: `10%`,
+    },
     root: {
         minWidth: 275,
-        display: 'inline-block'
+        display: 'inline-block',
+        marginLeft: `2%`,
+        // border: 1,
+        // borderColor: 'black'
     },
     title: {
         fontSize: 20,
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     text: {
         fontSize: 20,
-        fontWeight: 'Light'
+        // fontWeight: 'Light',
     },
 });
 
@@ -39,7 +47,7 @@ export default function ShowResult() {
     let totalBalance = income - expenses;
     return (
         <div>
-            <Card className={classes.root} >
+            <Card className={classes.mainroot}>
                 <CardContent>
                     <h1 className={classes.text}>Total Income</h1>
                     <br />
@@ -49,7 +57,7 @@ export default function ShowResult() {
                 </CardContent>
             </Card>
             <Card className={classes.root} >
-                <CardContent>
+                <CardContent className={classes.content}>
                     <h1 className={classes.text}>Total Expenses</h1>
                     <br />
                     <Typography className={classes.title} style={{ color: "red" }} variant="body2" component="p">

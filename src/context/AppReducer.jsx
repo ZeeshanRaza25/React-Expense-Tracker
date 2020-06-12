@@ -1,9 +1,11 @@
 export default (state, action) => {
+    console.log(action);
+    console.log("state",state);
     switch (action.type) {
         case 'DELETE_TRANSACTION':
             return {
                 ...state,
-                transactions: state.transactions.filter(transaction => transaction.id !== action.payload.id)
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
             }
 
         case 'ADD_TRANSACTION':

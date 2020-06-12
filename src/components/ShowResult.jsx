@@ -24,16 +24,17 @@ const useStyles = makeStyles({
 export default function ShowResult() {
     const {transactions} = useContext(GlobalContext);
 
-    const inc = transactions.map(transaction=> transaction.income);
-    const totalIncome = inc.reduce((acc, item) => (acc += item) , 0).toFixed(2);
+    // const totalIncome = inc.reduce((a, b) => a =+ b);
+    const inc = transactions.reduce((result, {income}) => result += income, 0);
+    console.log(inc);    
 
-    const exp = transactions.map(transaction=> transaction.expenses);
-    const totalExpenses = exp.reduce((acc, item) => (acc += item) , 0).toFixed(2);
+    const totalExpenses  = transactions.reduce((result, {expenses}) => result += expenses, 0);
+    // const totalExpenses = exp.reduce((a, b) => a += b);
 
-    // console.log(transactions);
+    console.log(inc, totalExpenses);
 
     const classes = useStyles();
-    let income = totalIncome;
+    let income = inc;
     let expenses = totalExpenses;
     let totalBalance = income - expenses;
     return (

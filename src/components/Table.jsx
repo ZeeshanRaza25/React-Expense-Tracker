@@ -16,7 +16,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { GlobalContext } from '../context/GlobalState';
 
-
 const useStyles = makeStyles(theme => ({
     root: {
         width: "90%",
@@ -71,7 +70,7 @@ export default function TableComponent() {
 
     const onToggleEditMode = id => {
         setTransaction(state => {
-            return transaction.map(row => {
+            return transactions.map(row => {
                 if (row.id === id) {
                     return { ...row, isEditMode: !row.isEditMode };
                 }
@@ -79,10 +78,6 @@ export default function TableComponent() {
             });
         });
     };
-    const deleteItem = id => {
-        setTransaction(() => transaction.filter(row => row.id !== id));
-    };
-
     const onChange = (e, row) => {
         if (!previous[row.id]) {
             setPrevious(state => ({ ...state, [row.id]: row }));
@@ -128,19 +123,19 @@ export default function TableComponent() {
                         <TableCell align="left">Title </TableCell>
                         <TableCell align="left">Income&nbsp;($)</TableCell>
                         <TableCell align="left">Expenses&nbsp;($)</TableCell>
-                        <TableCell align="left" />
+                        {/* <TableCell align="left" /> */}
                         <TableCell align="left" />
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {transaction.map(row => (
+                    { transactions ? transactions.map(row => (
                         <TableRow key={row.id}>
                             {/* {console.log(row)} */}
                             {/* <CustomTableCell {...{ row, name: "id", onChange }} /> */}
                             <CustomTableCell {...{ row, name: "title", onChange }} />
                             <CustomTableCell {...{ row, name: "income", onChange }} />
                             <CustomTableCell {...{ row, name: "expenses", onChange }} />
-                            <TableCell className={classes.selectTableCell}>
+                            {/* <TableCell className={classes.selectTableCell}>
                                 {row.isEditMode ? (
                                     <>
                                         <IconButton
@@ -164,17 +159,17 @@ export default function TableComponent() {
                                             <EditIcon />
                                         </IconButton>
                                     )}
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell className={classes.selectTableCell}>
                                 <DeleteIcon
                                     aria-label="delete"
-                                    onClick={() => deleteItem(row.id)}
-                                    // onClick={() => deleteTransaction(row.id)}
+                                    // onClick={() => deleteItem(row.id)}
+                                    onClick={() => deleteTransaction(row.id)}
                                 >
                                 </DeleteIcon>
                             </TableCell>
                         </TableRow>
-                    ))}
+                    )) : 'No record Found!'}
                 </TableBody>
             </Table>
         </Paper>

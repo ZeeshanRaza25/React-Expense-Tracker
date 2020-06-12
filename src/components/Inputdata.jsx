@@ -21,17 +21,17 @@ export default function InputData() {
     let [expenses, setExpenses] = useState(0);
 
     const { addTransaction } = useContext(GlobalContext);
-    // console.log(transactions);
+    // console.log(addTransaction , "hello");
 
     const onSubmit = () => {
         const newTransaction = {
             id: Math.floor(Math.random() * 100000000),
             title,
-            income,
-            expenses,
+            income: income * 1,
+            expenses: expenses * 1,
         }
-        console.log(newTransaction);
-        return addTransaction(newTransaction);
+        // console.log(newTransaction);
+        addTransaction(newTransaction);
     }
 
     const classes = useStyles();

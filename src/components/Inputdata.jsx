@@ -44,14 +44,15 @@ export default function InputData() {
             expenses: expenses * 1,
         }
         // console.log(newTransaction);
-        addTransaction(newTransaction);
+         // eslint-disable-next-line no-lone-blocks
+        addTransaction(newTransaction)
     }
 
     const classes = useStyles();
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            <TextField className={classes.TextField} size="small" variant="outlined" id="standard-basic" label="Title" onChange={(event) => setTitle(event.target.value)} />
+            <TextField size="small" variant="outlined" error={false} id="standard-basic" label="Title" onChange={(event) => setTitle(event.target.value)} />
             <TextField id="standard-basic" size="small" variant="outlined" label="Income" onChange={(event) => setIncome(event.target.value)} />
             <TextField id="standard-basic" size="small" variant="outlined" label="Expenses" onChange={(event) => setExpenses(event.target.value)} />
             <Button className={classes.button} variant="outlined" onClick={onSubmit}>

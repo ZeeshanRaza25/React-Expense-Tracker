@@ -18,18 +18,28 @@ import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "75%",
+        width: "65%",
+        margin: 'auto',
         marginTop: theme.spacing(1),
         overflowX: "auto",
         // marginLeft: `3%`,
         textAlign: 'center',
         alignSelf: 'center',
         alignContent: 'center',
-        margin: `10%`,
+        justify: "center",
+        alignItems: "center",
+        // direction: "row",
+        // margin: `10%`,
         // padding: 'auto'
     },
     table: {
-        // minWidth: `90%`
+        // minWidth: `40vw`,
+        // textAlign: 'center',
+        // alignSelf: 'center',
+        alignContent: 'center',
+        justify: "center",
+        alignItems: "center",
+        // direction: "row",
     },
     selectTableCell: {
         // width: `25%`
@@ -119,7 +129,7 @@ export default function TableComponent() {
                 Transaction Record Detail
             </h1>
             <br />
-            <Table className={classes.table} aria-label="caption table">
+            <Table className={classes.table} aria-label="caption table" align="center" >
                 {/* <caption>A barbone structure table example with a caption</caption> */}
                 <TableHead>
                     <TableRow>
@@ -132,11 +142,11 @@ export default function TableComponent() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    { transactions ? transactions.map(row => (
+                    {transactions ? transactions.map(row => (
                         <TableRow key={row.id}>
                             {/* {console.log(row)} */}
                             {/* <CustomTableCell {...{ row, name: "id", onChange }} /> */}
-                            <CustomTableCell {...{ row, name: "title", onChange }} />
+                            <CustomTableCell  {...{ row, name: "title", onChange }} />
                             <CustomTableCell {...{ row, name: "income", onChange }} />
                             <CustomTableCell {...{ row, name: "expenses", onChange }} />
                             {/* <TableCell className={classes.selectTableCell}>

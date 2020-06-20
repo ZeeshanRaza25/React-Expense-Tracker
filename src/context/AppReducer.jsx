@@ -1,6 +1,6 @@
 export default (state, action) => {
     console.log(action);
-    console.log("state",state);
+    console.log("state", state);
     switch (action.type) {
         case 'DELETE_TRANSACTION':
             return {
@@ -13,6 +13,10 @@ export default (state, action) => {
                 ...state,
                 transactions: [action.payload, ...state.transactions]
             }
+        case 'EDIT_TITLE':
+            return { ...state }
+        case 'EDIT_AMOUNT':
+            return { ...state }
         default:
             return state;
     }

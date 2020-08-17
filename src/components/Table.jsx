@@ -7,11 +7,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 // Icons
-import EditIcon from "@material-ui/icons/EditOutlined";
-import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
-import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
+// import EditIcon from "@material-ui/icons/EditOutlined";
+// import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
+// import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { GlobalContext } from '../context/GlobalState';
@@ -82,16 +82,16 @@ export default function TableComponent() {
     const [previous, setPrevious] = useState({});
     const classes = useStyles();
 
-    const onToggleEditMode = id => {
-        setTransaction(state => {
-            return transactions.map(row => {
-                if (row.id === id) {
-                    return { ...row, isEditMode: !row.isEditMode };
-                }
-                return row;
-            });
-        });
-    };
+    // const onToggleEditMode = id => {
+    //     setTransaction(state => {
+    //         return transactions.map(row => {
+    //             if (row.id === id) {
+    //                 return { ...row, isEditMode: !row.isEditMode };
+    //             }
+    //             return row;
+    //         });
+    //     });
+    // };
     const onChange = (e, row) => {
         if (!previous[row.id]) {
             setPrevious(state => ({ ...state, [row.id]: row }));
@@ -108,20 +108,20 @@ export default function TableComponent() {
         setTransaction(newtransaction);
     };
 
-    const onRevert = id => {
-        const newtransaction = transaction.map(row => {
-            if (row.id === id) {
-                return previous[id] ? previous[id] : row;
-            }
-            return row;
-        });
-        setTransaction(newtransaction);
-        setPrevious(state => {
-            delete state[id];
-            return state;
-        });
-        onToggleEditMode(id);
-    };
+    // const onRevert = id => {
+    //     const newtransaction = transaction.map(row => {
+    //         if (row.id === id) {
+    //             return previous[id] ? previous[id] : row;
+    //         }
+    //         return row;
+    //     });
+    //     setTransaction(newtransaction);
+    //     setPrevious(state => {
+    //         delete state[id];
+    //         return state;
+    //     });
+    //     onToggleEditMode(id);
+    // };
 
     return (
         <Paper className={classes.root}>

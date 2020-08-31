@@ -1,4 +1,3 @@
-console.log('registered!');
 let cacheData = 'appv1';
 // var urlsToCache = [
 //   '/',

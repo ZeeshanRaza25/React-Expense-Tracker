@@ -1,6 +1,10 @@
 let self = this;
-// console.log('registered!');
 let cacheData = 'app1';
+// var urlsToCache = [
+//   '/',
+//   '/styles/main.css',
+//   '/script/main.js'
+// ];
 
 var urlsToCache = [
   '/',

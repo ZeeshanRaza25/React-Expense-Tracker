@@ -23,23 +23,24 @@ import { initNotification } from './services/firebaseService'
 
 function App() {
   // const classes = useStyles();
+  initNotification();
   return (
     <GlobalProvider>
-      <div>
-        <Grid item xs={12}>
+      {/* <div> */}
+        <Grid item span={12}>
           <header className="App-header">
             <h1>Expense Tracker</h1>
-            <button style={{
+            {/* <button style={{
               marginLeft: '100px'
-            }} onClick={initNotification}>Notifications</button>
+            }} onClick={initNotification}>Notifications</button> */}
           </header>
         </Grid>
         <br />
         <ShowResult />
-        <br /><br />
+        {/* <br /><br /> */}
         <InputData />
         <TableComponent />
-      </div>
+      {/* </div> */}
     </GlobalProvider>
   );
 }

@@ -18,10 +18,11 @@ import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "65%",
+        width: "75%",
         margin: 'auto',
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(2),
         overflowX: "auto",
+        marginBottom: '15%',
         // marginLeft: `3%`,
         textAlign: 'center',
         alignSelf: 'center',

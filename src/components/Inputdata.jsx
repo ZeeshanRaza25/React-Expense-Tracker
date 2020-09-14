@@ -6,18 +6,16 @@ import Grid from '@material-ui/core/Grid';
 
 import { GlobalContext } from '../context/GlobalState';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
+  root: {
+    flexGrow: 1,
+    // marginTop: '50px'
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
 }));
 
 // const useStyles = makeStyles((theme) => ({
@@ -66,48 +64,100 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 export default function InputData() {
-    let [title, setTitle] = useState('');
-    let [income, setIncome] = useState(0);
-    let [expenses, setExpenses] = useState(0);
+  let [title, setTitle] = useState('');
+  let [income, setIncome] = useState(0);
+  let [expenses, setExpenses] = useState(0);
 
-    const { addTransaction } = useContext(GlobalContext);
-    // console.log(addTransaction , "hello");
+  const { addTransaction } = useContext(GlobalContext);
+  // console.log(addTransaction , "hello");
 
-    const onSubmit = () => {
-        const newTransaction = {
-            id: Math.floor(Math.random() * 100000000),
-            title,
-            income: income * 1,
-            expenses: expenses * 1,
-        }
-        // console.log(newTransaction);
-        // eslint-disable-next-line no-lone-blocks
-        addTransaction(newTransaction)
-    }
+  const onSubmit = () => {
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      title,
+      income: income * 1,
+      expenses: expenses * 1,
+    };
+    // console.log(newTransaction);
+    // eslint-disable-next-line no-lone-blocks
+    addTransaction(newTransaction);
+  };
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-            <Grid container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                styles={classes.root}
-                spacing={1}>
-                <Grid item xs={2}>
-                    <TextField size="small" variant="outlined" label="Title" onChange={(event) => setTitle(event.target.value)} />
-                </Grid>
-                <Grid item xs={2}>
-                    <TextField size="small" variant="outlined" label="Income" onChange={(event) => setIncome(event.target.value)} />
-                </Grid>
-                <Grid item xs={2}>
-                    <TextField size="small" variant="outlined" label="Expenses" onChange={(event) => setExpenses(event.target.value)} />
-                </Grid>
-                <Grid item xs={2}>
-                    <Button className={classes.button} variant="outlined" onClick={onSubmit}>
-                        Add Transaction
-                    </Button>
-                </Grid>
-            </Grid>
-    );
+  return (
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="center"
+      styles={classes.root}
+      style={{
+        padding: '10px',
+      }}
+      spacing={5}
+    >
+      <Grid
+        item
+        xs={7}
+        sm={2}
+        style={{
+          marginTop: '25px',
+        }}
+      >
+        <TextField
+          size="small"
+          variant="outlined"
+          label="Title"
+          onChange={(event) => setTitle(event.target.value)}
+        />
+      </Grid>
+      <Grid
+        item
+        xs={7}
+        sm={2}
+        style={{
+          marginTop: '25px',
+        }}
+      >
+        <TextField
+          size="small"
+          variant="outlined"
+          label="Income"
+          onChange={(event) => setIncome(event.target.value)}
+        />
+      </Grid>
+      <Grid
+        item
+        xs={7}
+        sm={2}
+        style={{
+          marginTop: '25px',
+        }}
+      >
+        <TextField
+          size="small"
+          variant="outlined"
+          label="Expenses"
+          onChange={(event) => setExpenses(event.target.value)}
+        />
+      </Grid>
+      <Grid
+        item
+        xs={7}
+        sm={2}
+        style={{
+          marginTop: '25px',
+        }}
+      >
+        <Button
+          className={classes.button}
+          variant="outlined"
+          onClick={onSubmit}
+        >
+          Add Transaction
+        </Button>
+      </Grid>
+    </Grid>
+  );
 }

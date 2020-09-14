@@ -1,7 +1,7 @@
 // import firebase from 'firebase';
 
-importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js');
-importScripts(
+this.importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js');
+this.importScripts(
   'https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js'
 );
 

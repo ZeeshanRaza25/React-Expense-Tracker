@@ -13,6 +13,9 @@ const config = {
 firebase.initializeApp(config);
 const messaging = firebase.messaging();
 
+// Add the public key generated from the console here.
+// messaging.usePublicVapidKey('BNu8xN1Gwo0bzxBaufAc0LrPJnz_6u2uFyV4BTuJMtGfBwP7G5vqHjK6Nf7v5uzLDZQq7RkD5n_Ow-MMSELJ6NQ');
+
 export function initNotification() {
   Notification.requestPermission().then((permission) => {
     console.log(permission);
@@ -36,3 +39,5 @@ export function initNotification() {
     }
   });
 }
+
+export default firebase;

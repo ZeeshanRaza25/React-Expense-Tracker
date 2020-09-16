@@ -18,7 +18,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "75%",
+        width: "95%",
         margin: 'auto',
         marginTop: theme.spacing(2),
         overflowX: "auto",
@@ -126,9 +126,9 @@ export default function TableComponent() {
 
     return (
         <Paper className={classes.root}>
-            <h1>
+            <h2>
                 Transaction Record Detail
-            </h1>
+            </h2>
             <br />
             <Table className={classes.table} aria-label="caption table" align="center" >
                 {/* <caption>A barbone structure table example with a caption</caption> */}
